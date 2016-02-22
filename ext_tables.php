@@ -44,6 +44,12 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$_EXTKEY])) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'TYPO3.' . $_EXTKEY,
+	'BlogSubscription',
+	'T3Blog Extbase: Blog Subscription Form'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'TYPO3.' . $_EXTKEY,
 	'Archive',
 	'T3Blog Extbase: Archive'
 );
@@ -238,11 +244,34 @@ $GLOBALS['TCA']['tx_t3blog_com_nl'] = array(
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) .
-			'Configuration/Tca/Subscriber.php',
+			'Configuration/Tca/PostSubscriber.php',
 		'typeicon_classes' => [
 			'default' => 'extensions-t3extblog-subscriber',
 		],
 		'searchFields' => 'email,name',
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_t3blog_blog_nl');
+$GLOBALS['TCA']['tx_t3blog_blog_nl'] = array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:t3extblog/Resources/Private/Language/locallang_db.xml:tx_t3blog_blog_nl',
+		'label' => 'email',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'default_sortby' => 'ORDER BY crdate DESC',
+		'languageField' => 'sys_language_uid',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+		),
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) .
+			'Configuration/Tca/BlogSubscriber.php',
+		'typeicon_classes' => [
+			'default' => 'extensions-t3extblog-subscriber',
+		],
+		'searchFields' => 'email',
 	),
 );
 
@@ -380,8 +409,10 @@ if (TYPO3_MODE === 'BE') {
 		'Tx_T3extblog',
 		'',
 		array(
-			'BackendPost' => 'index',
-			'BackendComment' => 'index, listPending, listByPost'
+			'BackendDashboard' => 'index',
+			'BackendPost' => 'index, sendPostNotifications',
+			'BackendComment' => 'index, listPending, listByPost',
+			'BackendSubscriber' => 'indexPostSubscriber, indexBlogSubscriber'
 		),
 		array(
 			'access' => 'user,group',
