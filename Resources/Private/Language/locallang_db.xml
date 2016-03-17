@@ -103,6 +103,7 @@
 			<label index="tx_t3blog_post">Nachricht</label>
 			<label index="tx_t3blog_post.title">Titel</label>
 			<label index="tx_t3blog_post.tagClouds">Tag Cloud (Komma separierte Liste)</label>
+			<label index="tx_t3blog_post.tagClouds.placeholder">tag1, tag2, tag3</label>
 			<label index="tx_t3blog_post.author">Autor</label>
 			<label index="tx_t3blog_post.date">Datum &amp; Zeit</label>
 			<label index="tx_t3blog_post.content">Inhalt</label>
@@ -116,6 +117,7 @@
             <label index="tx_t3blog_post.number_views">Anzahl der Aufrufe</label>
             <label index="tx_t3blog_post.meta_description">Beschreibung</label>
             <label index="tx_t3blog_post.meta_keywords">Keywords (Komma separierte Liste)</label>
+			<label index="tx_t3blog_post.meta_keywords.placeholder">keyword1, keyword2, keyword3</label>
             <label index="tx_t3blog_post.preview_mode">Vorschau-Modus</label>
             <label index="tx_t3blog_post.preview_mode.0">Auto - Nutze Vorschau Text und Bild (oder den ganzen Artikel)</label>
             <label index="tx_t3blog_post.preview_mode.1">Zeige das erste Inhalts-Element als Vorschau</label>
@@ -123,6 +125,7 @@
             <label index="tx_t3blog_post.preview_mode.3">Zeige drei Inhalts-Elemente als Vorschau</label>
             <label index="tx_t3blog_post.preview_text">Text</label>
             <label index="tx_t3blog_post.preview_image">Bild</label>
+			<label index="tx_t3blog_post.mails_sent">Benachrichtigungsemail schon versendet</label>
 
 			<label index="tx_t3blog_cat">Kategorien</label>
 			<label index="tx_t3blog_cat.parent_id">Kategorie-Baum</label>
